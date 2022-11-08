@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.prova.raccoltafilm.exceptions.RegistaConFilmAssociatoException;
 import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.model.Regista;
 
@@ -52,9 +53,11 @@ public class RegistaDAOImpl implements RegistaDAO {
 	}
 
 	@Override
-	public void delete(Regista o) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void delete(Regista registaInstance) throws Exception {
+		if (registaInstance == null) {
+			throw new Exception("Problema valore in input");
+		}
+		entityManager.remove(entityManager.merge(registaInstance));
 	}
 
 	@Override

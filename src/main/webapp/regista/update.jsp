@@ -40,7 +40,9 @@
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="${pageContext.request.contextPath}/ExecuteInsertRegistaServlet" class="row g-3" novalidate="novalidate">
+							<form method="post" action="${pageContext.request.contextPath}/ExecuteUpdateRegistaServlet" class="row g-3" novalidate="novalidate">
+							
+							<input type="hidden" name="idRegista" value="${insert_regista_attr.id }" >
 							
 							
 								<div class="col-md-6">

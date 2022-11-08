@@ -28,7 +28,7 @@
 				    </div>
 				    <div class='card-body'>
 		
-							<form method="post" action="ExecuteSearchRegistaServlet" class="row g-3" >
+							<form method="post" action="${pageContext.request.contextPath}/ExecuteSearchRegistaServlet" class="row g-3" >
 							
 							
 								<div class="col-md-6">
@@ -64,7 +64,7 @@
 								
 							<div class="col-12">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
-								<a class="btn btn-outline-primary ml-2" href="PrepareInsertRegistaServlet">Add New</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/PrepareInsertRegistaServlet">Add New</a>
 								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
 							</div>
 		

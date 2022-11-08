@@ -66,8 +66,31 @@ public class FilmServiceImpl implements FilmService {
 
 	@Override
 	public void aggiorna(Film filmInstance) throws Exception {
-		// TODO Auto-generated method stub
 
+		// questo è come una connection
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// questo è come il MyConnection.getConnection()
+			entityManager.getTransaction().begin();
+
+			// uso l'injection per il dao
+			filmDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			// grazie al fatto che il regista ha un id viene eseguito il merge
+			// automaticamente
+			// se quell'id non ha un corrispettivo in tabella viene lanciata una eccezione
+			filmDAO.update(filmInstance);
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override

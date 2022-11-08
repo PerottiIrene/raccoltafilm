@@ -18,7 +18,7 @@ public interface RegistaService {
 
 	public void inserisciNuovo(Regista registaInstance) throws Exception;
 
-	public void rimuovi(Long idRegista) throws Exception;
+	public void rimuovi(Regista registaInstance) throws Exception;
 	
 	public List<Regista> findByExample(Regista example) throws Exception;
 

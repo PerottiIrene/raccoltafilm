@@ -84,10 +84,10 @@
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
-					    	<form action="ExecuteDeleteFilmServlet" method="post">
+					    	<form action="${pageContext.request.contextPath}/ExecuteDeleteFilmServlet" method="post">
 					    		<input type="hidden" name="idFilm" value="${delete_film_attr.id}">
 						    	<button type="submit" name="submit" id="submit" class="btn btn-danger">Conferma</button>
-						        <a href="ExecuteListFilmServlet" class='btn btn-outline-secondary' style='width:80px'>
+						        <a href="${pageContext.request.contextPath}/ExecuteListFilmServlet" class='btn btn-outline-secondary' style='width:80px'>
 						            <i class='fa fa-chevron-left'></i> Back
 						        </a>
 					        </form>

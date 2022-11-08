@@ -10,7 +10,7 @@
 	
 	
 		 <!-- Custom styles for login -->
-	    <link href="assets/css/signin.css" rel="stylesheet">
+	    <link href="${pageContext.request.contextPath}/assets/css/signin.css" rel="stylesheet">
 	
 	</head>
 	

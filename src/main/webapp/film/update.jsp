@@ -26,42 +26,43 @@
 			  
 			  <div class='card'>
 				    <div class='card-header'>
-				        <h5>Inserisci nuovo elemento</h5> 
+				        <h5>Modifica elemento</h5> 
 				    </div>
 				    <div class='card-body'>
 		
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
+					
 		
 		
-							<form method="post" action="${pageContext.request.contextPath}/ExecuteInsertFilmServlet" class="row g-3" novalidate="novalidate">
-							
+							<form method="post" action="${pageContext.request.contextPath}/ExecuteUpdateFilmServlet" class="row g-3" novalidate="novalidate">
+							<input type="hidden" name="idFilm" value="${insert_film_attr.id }" >
 							
 								<div class="col-md-6">
 									<label for="titolo" class="form-label">Titolo <span class="text-danger">*</span></label>
-									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" value="${insert_film_attr.titolo }">
+									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" value="${insert_film_attr.titolo }"required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="genere" class="form-label">Genere <span class="text-danger">*</span></label>
-									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }">
+									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }"required>
 								</div>
 							
 								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_film_attr.dataPubblicazione}' />
 								<div class="col-md-6">
 									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione <span class="text-danger">*</span></label>
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
-	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione" value="${parsedDate}" >
+	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione" value="${parsedDate}" required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="minutiDurata" class="form-label">Durata (minuti) <span class="text-danger">*</span></label>
-									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" value="${insert_film_attr.minutiDurata }">
+									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" value="${insert_film_attr.minutiDurata }"required>
 								</div>
 								
 								
 								<div class="col-md-6">
 									<label for="regista.id">Regista <span class="text-danger">*</span></label>
-								    <select class="form-select" id="regista.id" name="regista.id">
+								    <select class="form-select" id="regista.id" name="idRegista">
 								    	<option value="" selected> -- Selezionare una voce -- </option>
 								      	<c:forEach items="${registi_list_attribute }" var="registaItem">
 								      		<option value="${registaItem.id}" ${insert_film_attr.regista.id == registaItem.id?'selected':''} >${registaItem.nome } ${registaItem.cognome }</option>
