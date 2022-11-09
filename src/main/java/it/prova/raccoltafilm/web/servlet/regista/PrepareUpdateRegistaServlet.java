@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 
 /**
  * Servlet implementation class PrepareUpdateRegistaServlet
@@ -18,12 +19,11 @@ import it.prova.raccoltafilm.service.MyServiceFactory;
 public class PrepareUpdateRegistaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    // injection del Service
+	private RegistaService registaService;
+    
     public PrepareUpdateRegistaServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    	this.registaService = MyServiceFactory.getRegistaServiceInstance();
     }
 
 	/**
@@ -40,7 +40,7 @@ public class PrepareUpdateRegistaServlet extends HttpServlet {
 		}
 
 		try {
-			request.setAttribute("insert_regista_attr", MyServiceFactory.getRegistaServiceInstance()
+			request.setAttribute("insert_regista_attr",registaService
 					.caricaSingoloElemento(Long.parseLong(idRegistaParam)));
 		} catch (Exception e) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo

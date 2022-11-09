@@ -63,8 +63,8 @@ public class ExecuteUpdateRegistaServlet extends HttpServlet {
 		// se sono qui i valori sono ok quindi posso creare l'oggetto da modificare
 		// occupiamoci delle operazioni di business
 		try {
-			MyServiceFactory.getRegistaServiceInstance().aggiorna(registaInstance);
-			request.setAttribute("registi_list_attribute", MyServiceFactory.getRegistaServiceInstance().listAllElements());
+			registaService.aggiorna(registaInstance);
+			request.setAttribute("registi_list_attribute", registaService.listAllElements());
 			request.setAttribute("successMessage", "Operazione effettuata con successo");
 		} catch (Exception e) {
 			e.printStackTrace();

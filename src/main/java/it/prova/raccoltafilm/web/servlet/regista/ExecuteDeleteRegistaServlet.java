@@ -36,7 +36,7 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 		if (!NumberUtils.isCreatable(idRegistaParam)) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("/home").forward(request, response);
 			return;
 		}
 
@@ -50,21 +50,21 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 		} catch (RegistaConFilmAssociatoException e) {
 		        e.printStackTrace();
 		        request.setAttribute("errorMessage", "Attenzione, regista associato a film.");
-		        request.getRequestDispatcher("home").forward(request, response);
+		        request.getRequestDispatcher("/home").forward(request, response);
 				return;
 		} catch (ElementNotFoundException e) {
-			request.getRequestDispatcher("ExecuteListRegistaServlet?operationResult=NOT_FOUND").forward(request,
+			request.getRequestDispatcher("/raccoltafilm/ExecuteListRegistaServlet?operationResult=NOT_FOUND").forward(request,
 					response);
 			return;
 		} catch (Exception e) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("/home").forward(request, response);
 			return;
 		}
 
-		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
+		response.sendRedirect("/raccoltafilm/ExecuteListRegistaServlet?operationResult=SUCCESS");
 	}
 
 }
