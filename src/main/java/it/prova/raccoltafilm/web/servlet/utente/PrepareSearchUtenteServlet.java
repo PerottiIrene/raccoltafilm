@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PrepareSearchUtenteServlet
  */
-@WebServlet("/admin/PrepareSearchUtenteServlet")
+@WebServlet("/PrepareSearchUtenteServlet")
 public class PrepareSearchUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

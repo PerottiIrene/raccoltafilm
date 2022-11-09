@@ -24,7 +24,7 @@
 			  
 			  <div class='card'>
 				    <div class='card-header'>
-				        <h5>Ricerca User</h5> 
+				        <h5>Ricerca Utenti</h5> 
 				    </div>
 				    <div class='card-body'>
 		
