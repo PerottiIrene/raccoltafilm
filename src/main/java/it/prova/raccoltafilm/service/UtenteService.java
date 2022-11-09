@@ -25,6 +25,10 @@ public interface UtenteService  {
 	public Utente accedi(String username, String password) throws Exception;
 	
 	public List<Utente> findByExample(Utente example) throws Exception;
+	
+	public Utente caricaSingoloElementoEager(Long id) throws Exception;
+	
+	public Utente findByIdFetchingRuoli(Long id);
 
 	//per injection
 	public void setUtenteDAO(UtenteDAO utenteDAO);

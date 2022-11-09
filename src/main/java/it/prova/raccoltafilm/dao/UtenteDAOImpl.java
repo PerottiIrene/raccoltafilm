@@ -126,4 +126,19 @@ public class UtenteDAOImpl implements UtenteDAO {
 		return typedQuery.getResultList();
 	}
 
+	@Override
+	public Optional<Utente> findOneEager(Long id) throws Exception {
+		return entityManager.createQuery("from Utente u left join fetch u.ruoli where u.id=:idUtente", Utente.class)
+				.setParameter("idUtente", id).getResultList().stream().findFirst();
+	}
+
+	@Override
+	public Utente findByIdFetchingRuoli(Long id) {
+		TypedQuery<Utente> query = entityManager.createQuery("select u FROM Utente u left join fetch u.ruoli r where u.id = :idUtente",Utente.class);
+		query.setParameter("idUtente", id);
+		return query.getResultList().stream().findFirst().orElse(null);
+	}
+	
+
 }
+
